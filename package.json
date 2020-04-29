@@ -1,0 +1,41 @@
+{
+  "name": "fastify-react-views",
+  "version": "1.0.0",
+  "description": "This is a Fastify view engine which renders React components on server. It renders static markup and *does not* support mounting those views on the client.",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "scripts": {
+    "build": "rimraf dist && tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/muturgan/fastify-react-views.git"
+  },
+  "keywords": [
+    "fastify",
+    "view engine",
+    "react"
+  ],
+  "author": "Andrey Sakharov <caxap_8787@mail.ru>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/muturgan/fastify-react-views/issues"
+  },
+  "homepage": "https://github.com/muturgan/fastify-react-views#readme",
+  "engines": {
+    "node": "^12.16.3",
+    "npm": "^6.14.4"
+  },
+  "dependencies": {
+    "fastify-plugin": "^1.6.1",
+    "hashlru": "^2.3.0",
+    "simple-react-viewengine": "^1.0.1"
+  },
+  "devDependencies": {
+    "@types/node": "^12.12.37",
+    "fastify": "^2.14.0",
+    "rimraf": "^3.0.2",
+    "tslint": "^5.20.1",
+    "typescript": "^3.8.3"
+  }
+}
