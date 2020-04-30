@@ -26,11 +26,11 @@ const fastifyView = function (app, templateDir, done) {
                 if (!res.getHeader('content-type')) {
                     res.header('Content-Type', 'text/html; charset=utf8');
                 }
-                res.send(html);
+                return res.send(html);
             }
             catch (er) {
                 console.error(er);
-                res.status(500).send(new Error('template rendering error'));
+                return res.status(500).send(new Error('template rendering error'));
             }
         };
         app.decorateReply('view', function (templateName, props) {

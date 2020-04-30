@@ -34,7 +34,7 @@ const fastifyView: TPlugin = function(app, templateDir, done): void
       };
 
 
-      const render = <P extends {}>(res: TRes, templateName: string, props: P): void =>
+      const render = <P extends {}>(res: TRes, templateName: string, props: P): FastifyReply<ServerResponse> =>
       {
          try {
             const html = renderFile<P>(templateName, props);
@@ -43,11 +43,11 @@ const fastifyView: TPlugin = function(app, templateDir, done): void
                res.header('Content-Type', 'text/html; charset=utf8');
             }
 
-            res.send(html);
+            return res.send(html);
 
          } catch (er) {
             console.error(er);
-            res.status(500).send(new Error('template rendering error'));
+            return res.status(500).send(new Error('template rendering error'));
          }
       };
 
