@@ -1,13 +1,11 @@
 import type { Server, IncomingMessage, ServerResponse } from 'http';
 import type { Plugin, FastifyReply } from 'fastify';
+import type { IEngineOptions } from '../index';
 import { engineFactory } from 'simple-react-viewengine';
 import fp from 'fastify-plugin';
 import HLRU from 'hashlru';
 
 
-export interface IEngineOptions {
-   templateDir: string;
-}
 
 type TPlugin = Plugin<Server, IncomingMessage, ServerResponse, IEngineOptions>;
 type TRes = FastifyReply<ServerResponse>;

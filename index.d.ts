@@ -2,7 +2,6 @@
 /// <reference types="fastify" />
 import type { IncomingMessage, Server, ServerResponse } from 'http';
 import type { Plugin } from 'fastify';
-import type { IEngineOptions as IOptions } from './src';
 
 declare module "fastify" {
   interface FastifyReply<HttpResponse> {
@@ -10,7 +9,9 @@ declare module "fastify" {
   }
 }
 
-export interface IEngineOptions extends IOptions {}
+export interface IEngineOptions {
+  templateDir: string;
+}
 
 export declare const engine: Plugin<
   Server,

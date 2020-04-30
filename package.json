@@ -1,6 +1,6 @@
 {
   "name": "fastify-react-views",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "This is a Fastify view engine which renders React components on server. It renders static markup and *does not* support mounting those views on the client.",
   "main": "dist/index.js",
   "typings": "index.d.ts",
