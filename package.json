@@ -29,7 +29,7 @@
   "dependencies": {
     "fastify-plugin": "^1.6.1",
     "hashlru": "^2.3.0",
-    "simple-react-viewengine": "^1.0.1"
+    "simple-react-viewengine": "^1.0.2"
   },
   "devDependencies": {
     "@types/node": "^12.12.37",

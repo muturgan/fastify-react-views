@@ -1,6 +1,6 @@
 import type { Server, IncomingMessage, ServerResponse } from 'http';
 import type { Plugin, FastifyReply } from 'fastify';
-import factory from 'simple-react-viewengine';
+import { engineFactory } from 'simple-react-viewengine';
 import fp from 'fastify-plugin';
 import HLRU from 'hashlru';
 
@@ -14,7 +14,7 @@ const fastifyView: TPlugin = function(app, templateDir, done): void
 {
    try {
       const lru = HLRU(100);
-      const engine = factory(templateDir);
+      const viewEngine = engineFactory(templateDir);
 
 
       const renderFile = <P extends {}>(templateName: string, props: P): string =>
@@ -26,7 +26,7 @@ const fastifyView: TPlugin = function(app, templateDir, done): void
             return cached;
          }
 
-         const html = engine(templateName, props);
+         const html = viewEngine(templateName, props);
 
          lru.set(hashKey, html);
 
@@ -66,7 +66,4 @@ const fastifyView: TPlugin = function(app, templateDir, done): void
    }
 };
 
-const plugin = fp(fastifyView, { fastify: '^2.x' });
-
-export default plugin;
-module.exports = plugin;
+export const engine = fp(fastifyView, { fastify: '^2.x' });
