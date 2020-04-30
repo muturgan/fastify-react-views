@@ -114,7 +114,7 @@ export class AppController {
 
 Under the hood, [Babel][babel] is used to compile your views to code compatible with your current node version, using the [react][babel-preset-react] and [env][babel-preset-env] presets by default. Only the files in your `views` directory (i.e. `app.register(engine, {templateDir: 'views'})`) will be compiled.
 
-Your views should be node modules that export a React component. These files can have `js` or `jsx` extension.
+Your views should be node modules that export a React component. These files can have `js`, `jsx`, `ts` or `tsx` extension.
 
 ```jsx
 // hello.jsx
@@ -137,6 +137,29 @@ function Hello(props)  {
 module.exports = Hello;
 ```
 
+or 
+
+```tsx
+// hello.tsx
+import * as React from 'react';
+import { IHello } from 'some/path';
+
+function Hello(props: IHello)  {
+  return (
+    <html>
+      <head>
+        <meta charSet="utf-8" />
+        <title>App</title>
+      </head>
+      <body>
+        <h2>Hello {props.text}!</h2>
+      </body>
+    </html>
+  );
+}
+
+module.exports = Hello;
+```
 
 ## License
 
