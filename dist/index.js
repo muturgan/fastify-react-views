@@ -6,10 +6,10 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const simple_react_viewengine_1 = require("simple-react-viewengine");
 const fastify_plugin_1 = __importDefault(require("fastify-plugin"));
 const hashlru_1 = __importDefault(require("hashlru"));
-const fastifyView = function (app, templateDir, done) {
+const fastifyView = function (app, options, done) {
     try {
         const lru = hashlru_1.default(100);
-        const viewEngine = simple_react_viewengine_1.engineFactory(templateDir);
+        const viewEngine = simple_react_viewengine_1.engineFactory(options.templateDir);
         const renderFile = (templateName, props) => {
             const hashKey = templateName + '|' + JSON.stringify(props);
             const cached = lru.get(hashKey);

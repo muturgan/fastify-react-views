@@ -5,16 +5,20 @@ import fp from 'fastify-plugin';
 import HLRU from 'hashlru';
 
 
-type TPlugin = Plugin<Server, IncomingMessage, ServerResponse, string>;
+export interface IEngineOptions {
+   templateDir: string;
+}
+
+type TPlugin = Plugin<Server, IncomingMessage, ServerResponse, IEngineOptions>;
 type TRes = FastifyReply<ServerResponse>;
 
 
 
-const fastifyView: TPlugin = function(app, templateDir, done): void
+const fastifyView: TPlugin = function(app, options, done): void
 {
    try {
       const lru = HLRU(100);
-      const viewEngine = engineFactory(templateDir);
+      const viewEngine = engineFactory(options.templateDir);
 
 
       const renderFile = <P extends {}>(templateName: string, props: P): string =>
