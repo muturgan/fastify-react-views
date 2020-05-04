@@ -20,6 +20,9 @@ jobs:
     - name: Remove a dist folder from gitignore
       run: sed -i '$ d' .gitignore
 
+    - name: Install dependencies
+      run: npm i
+
     - name: Build
       run: npm run build
 
